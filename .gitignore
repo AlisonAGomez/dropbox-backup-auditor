@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+
+# Configuração local e segredos
+config.yaml
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Dados gerados em execução
+cache/
+logs/
+relatorios/
+suporte/
+*.log
+*.tmp
+
+# Pacotes e artefatos locais
+*.zip
+*.7z
+*.rar
+build/
+dist/
+*.egg-info/
+
+# IDE / SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

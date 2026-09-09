@@ -1,0 +1,8 @@
+Auditor Dropbox v2.5
+Data de organização: 09/09/2026
+Escopo: auditoria de Arquivos e backups de VMs armazenados no Dropbox
+Integração: pacote Python + CLI JSON
+Relatórios: PDF, CSV e JSON
+Cache: histórico operacional preservado do pacote recebido
+Credenciais: somente por variáveis de ambiente; segredos no YAML são rejeitados
+Python mínimo: 3.11

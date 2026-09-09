@@ -1,0 +1,48 @@
+# Exemplos opcionais para copiar para config.yaml.
+# Este arquivo nao e carregado automaticamente.
+
+auditoria_vms:
+  minimo_eventos_aprender: 4
+  idade_maxima_sem_historico_dias: 45
+
+politicas_vms:
+  EMPRESA-BACKUP:
+    "100":
+      frequencia: semanal
+      tolerancia_horas: 36
+    "101":
+      frequencia: quinzenal
+      tolerancia_horas: 48
+    "102":
+      frequencia: diario
+      tolerancia_horas: 12
+    "199":
+      isento: true
+      motivo: "VM/CT fora da política de backup por decisão documentada."
+
+# Frequencias aceitas: diario, semanal, quinzenal e mensal.
+# A tolerancia e adicional ao proximo horario previsto.
+
+empresas:
+  EMPRESA-MIGRADA-BACKUP:
+    estado: migrado_drive
+    auditar_arquivos: false
+    auditar_vms: false
+    observacao: "Backups ativos migrados para o Google Drive."
+
+  EMPRESA-SOMENTE-VMS-BACKUP:
+    auditar_arquivos: false
+    auditar_vms: true
+    observacao: "Empresa com somente backups de VMs no Dropbox."
+
+  EMPRESA-ARQUIVOS-DIARIOS-BACKUP:
+    auditar_arquivos: true
+    auditar_vms: false
+    exigir_atividade_arquivos: true
+    observacao: "Neste ambiente, ausência de atividade de Arquivos na janela deve gerar atenção."
+
+  EMPRESA-FORA-ESCOPO-BACKUP:
+    estado: fora_escopo
+    auditar_arquivos: false
+    auditar_vms: false
+    observacao: "Empresa encerrada/fora do escopo operacional; conteúdo residual não gera alerta."

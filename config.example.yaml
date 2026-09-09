@@ -1,0 +1,98 @@
+raiz_dropbox: /Aplicativos
+timezone: America/Sao_Paulo
+
+estrutura:
+  pasta_arquivos: arquivos
+  pasta_vms: VMS/pve
+  prefixo_vm: vm-
+
+analise:
+  minimo_backups_para_prever: 2
+  minimo_backups_confianca_alta: 3
+  max_backups_por_vm_para_relatorio: 10
+  arquivos_max_idade_horas: 168
+
+tolerancias:
+  diario_horas: 12
+  semanal_horas: 24
+  quinzenal_horas: 36
+  mensal_horas: 48
+  irregular_horas: 24
+
+relatorio:
+  gerar_pdf: true
+  gerar_csv: true
+  gerar_json: true
+
+dropbox:
+  timeout_segundos: 60
+
+auditoria_arquivos:
+  modo: cursor
+  tentativas_dropbox: 3
+  continuar_com_resultado_parcial: true
+  estrategia: incremental
+  max_paginas_incremental_por_empresa: 80
+  max_paginas_completo_por_empresa: 200
+  tempo_maximo_empresa_minutos: 15
+  checkpoint_a_cada_paginas: 1
+  criar_cache_apos_completo: true
+  retomar_varredura_completa: true
+  cache_dir: cache
+  cache_cursor_arquivo: auditoria_arquivos_cursor_cache.json
+  heartbeat_arquivo: ''
+  heartbeat_max_idade_horas: 168
+  amostras_por_empresa: 5
+  recuperar_cursor_invalido_automaticamente: true
+  ignorar_nomes:
+    - .DS_Store
+    - Thumbs.db
+    - desktop.ini
+  ignorar_extensoes:
+    - .tmp
+    - .temp
+    - .part
+    - .partial
+    - .lock
+    - .crdownload
+  ignorar_prefixos:
+    - ~$
+    - .~lock.
+
+auditoria_vms:
+  varrer_backups_fora_do_lugar: false
+  minimo_eventos_aprender: 4
+  idade_maxima_sem_historico_dias: 45
+  max_paginas_eventos_por_raiz: 100
+  tempo_maximo_eventos_por_raiz_minutos: 10
+  max_eventos_historico_por_vm: 365
+  max_paginas_backups_fora_do_lugar: 0
+  tempo_maximo_backups_fora_do_lugar_minutos: 60
+
+empresas:
+  EMPRESA-EXEMPLO-BACKUP:
+    auditar_arquivos: true
+    auditar_vms: true
+    observacao: "Exemplo genérico. Substitua pelas empresas reais somente no config.yaml local."
+
+  EMPRESA-MIGRADA-BACKUP:
+    estado: migrado_drive
+    auditar_arquivos: false
+    auditar_vms: false
+    observacao: "Backups ativos foram migrados para outro destino."
+
+  EMPRESA-FORA-ESCOPO-BACKUP:
+    estado: fora_escopo
+    auditar_arquivos: false
+    auditar_vms: false
+    observacao: "Conteúdo residual não deve gerar alerta."
+
+politicas_vms:
+  EMPRESA-EXEMPLO-BACKUP:
+    "100":
+      frequencia: diario
+      tolerancia_horas: 36
+      motivo: "Exemplo de periodicidade explícita."
+    "199":
+      isento: true
+      motivo: "Exemplo de VM/CT fora da política de backup."

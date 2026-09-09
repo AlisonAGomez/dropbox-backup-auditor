@@ -1,0 +1,5 @@
+Auditor Dropbox v2.5
+Revisão de código público: 20260909-r4
+
+Esta distribuição contém somente código-fonte, documentação, testes e exemplos genéricos.
+Configurações operacionais, cache, logs, relatórios, pacotes de suporte e credenciais não fazem parte do repositório público.
